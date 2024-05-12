@@ -10,7 +10,9 @@ import { browserFields, browserOperations } from './BrowserDescription.node';
 import { fileFields, fileOperations } from './FileDescription.node';
 import { captchaFields, captchaOperations } from './CaptchaDescription.node';
 import { captchaResolveApiRequestV2 } from './YankWSFunctions';
-import { imageFields } from '../Bannerbear/ImageDescription';
+import { emailFields, emailOperations } from './EmailDescription';
+import { excelFields, excelOperations } from './ExcelDescription';
+import { webServiceFields, webServiceOperations } from './WebServiceDescription';
 
 const { Builder, By } = require('selenium-webdriver');
 var driver = new Builder().forBrowser('chrome');
@@ -58,6 +60,18 @@ export class YankStudio implements INodeType {
 						name: 'Captcha',
 						value: 'captcha',
 					},
+					{
+						name: 'Web Service',
+						value: 'webService',
+					},
+					{
+						name: 'Excel',
+						value: 'excel',
+					},
+					{
+						name: 'Email',
+						value: 'email',
+					},
 				],
 				default: 'browser',
 			},
@@ -70,6 +84,15 @@ export class YankStudio implements INodeType {
 
 			...captchaOperations,
 			...captchaFields,
+
+			...emailOperations,
+			...emailFields,
+
+			...excelOperations,
+			...excelFields,
+
+			...webServiceOperations,
+			...webServiceFields
 		]
 	};
 
