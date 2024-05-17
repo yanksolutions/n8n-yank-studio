@@ -8,8 +8,11 @@ COPY . /customizations
 WORKDIR /customizations
 
 # Instale uma versão específica do pnpm
-RUN npx install -g pnpm@8.14.3 && \
-    npx install
+RUN npm install -g npm@10.8.0
+
+RUN npm install -g pnpm@8.14.3
+
+RUN pnpm install
 
 RUN pnpm build
 
