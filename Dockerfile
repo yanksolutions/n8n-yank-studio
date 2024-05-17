@@ -1,11 +1,20 @@
-FROM node
+# Use a imagem base do node com pnpm e uma versão específica do Node.js
+FROM node:20
 
-RUN mkdir /app
+# Copie seus arquivos personalizados para dentro do contêiner
+COPY . /customizations
 
-WORKDIR /app
+# Defina o diretório de trabalho
+WORKDIR /customizations
 
-COPY . .
+# Instale uma versão específica do pnpm
+RUN npx install -g pnpm@8.14.3 && \
+    npx install
 
+RUN pnpm build
+
+# Exponha a porta em que o n8n está sendo executado (padrão: 5678)
 EXPOSE 5678
 
-CMD [ "pnpm", "start" ]
+# Defina o comando de inicialização do n8n usando pnpm
+CMD ["pnpm", "start"]
