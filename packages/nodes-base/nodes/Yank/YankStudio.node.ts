@@ -21,7 +21,7 @@ export class YankStudio implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Yank Studio',
 		name: 'yankStudio',
-		icon: 'file:Yank-Logo-Degrade-simbolo.png',
+		icon: 'file:yank.png',
 		group: ['output'],
 		version: 1,
 		subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
@@ -239,5 +239,4 @@ export class YankStudio implements INodeType {
 			return [returnData];
 		}
 	}
-
 }
