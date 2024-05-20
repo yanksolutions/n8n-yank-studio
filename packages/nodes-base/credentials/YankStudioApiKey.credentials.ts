@@ -5,10 +5,10 @@ import type {
 	INodeProperties,
 } from 'n8n-workflow';
 
-export class YankStudio implements ICredentialType {
-	name = 'yankStudioWS';
+export class YankStudioApiKey implements ICredentialType {
+	name = 'yankStudioApiKey';
 
-	displayName = 'Yank Studio WS';
+	displayName = 'Yank Studio Account';
 
 	documentationUrl = 'yankStudioWS';
 

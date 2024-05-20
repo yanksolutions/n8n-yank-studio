@@ -7,11 +7,8 @@ import type {
 	INodeTypeDescription,
 } from 'n8n-workflow';
 import { browserFields, browserOperations } from './BrowserDescription.node';
-import { fileFields, fileOperations } from './FileDescription.node';
 import { captchaFields, captchaOperations } from './CaptchaDescription.node';
 import { captchaResolveApiRequestV2 } from './YankWSFunctions';
-import { emailFields, emailOperations } from './EmailDescription';
-import { excelFields, excelOperations } from './ExcelDescription';
 import { webServiceFields, webServiceOperations } from './WebServiceDescription';
 
 const { Builder, By } = require('selenium-webdriver');
@@ -32,9 +29,13 @@ export class YankStudio implements INodeType {
 		inputs: ['main'],
 		outputs: ['main'],
 		credentials: [
+			// {
+			// 	name: 'yankStudioApiKey',
+			// 	required: true,
+			// },
 			{
-				name: 'yankStudioWS',
-				required: true,
+				name: 'yankStudioBasicAuth',
+				required: false,
 			},
 		],
 		properties: [
@@ -49,10 +50,6 @@ export class YankStudio implements INodeType {
 						value: 'browser',
 					},
 					{
-						name: 'File',
-						value: 'file',
-					},
-					{
 						name: 'Ocr',
 						value: 'ocr',
 					},
@@ -63,15 +60,7 @@ export class YankStudio implements INodeType {
 					{
 						name: 'Web Service',
 						value: 'webService',
-					},
-					{
-						name: 'Excel',
-						value: 'excel',
-					},
-					{
-						name: 'Email',
-						value: 'email',
-					},
+					}
 				],
 				default: 'browser',
 			},
@@ -79,17 +68,8 @@ export class YankStudio implements INodeType {
 			...browserOperations,
 			...browserFields,
 
-			...fileOperations,
-			...fileFields,
-
 			...captchaOperations,
 			...captchaFields,
-
-			...emailOperations,
-			...emailFields,
-
-			...excelOperations,
-			...excelFields,
 
 			...webServiceOperations,
 			...webServiceFields

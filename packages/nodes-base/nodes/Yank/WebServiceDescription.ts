@@ -43,12 +43,12 @@ export const webServiceOperations: INodeProperties[] = [
 
 export const webServiceFields: INodeProperties[] = [
 	/* -------------------------------------------------------------------------- */
-	/*                                Browser:Open                               */
+	/*                                WS:Save                               */
 	/* -------------------------------------------------------------------------- */
 	{
-		displayName: 'File',
-		name: 'browser',
-		type: 'options',
+		displayName: 'Object',
+		name: 'object',
+		type: 'string',
 		required: true,
 		default: '',
 		displayOptions: {
@@ -57,31 +57,29 @@ export const webServiceFields: INodeProperties[] = [
 				operation: ['save'],
 			},
 		},
-        options:[
-            {
-				displayName: 'Text',
-				name: 'text',
-				value: 'text',
-				default: true,
-				description: 'Text file',
+		description: 'Object that you want to save.',
+	},
+	{
+		displayName: 'Table',
+		name: 'table',
+		type: 'string',
+		required: true,
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['webService'],
+				operation: ['save'],
 			},
-            {
-				displayName: 'Excel',
-				name: 'excel',
-				value: 'excel',
-				default: false,
-				description: 'Excel file',
-			},
-        ],
-		description: 'Select file type that you want to read.',
+		},
+		description: 'Table that you want to persist your data',
 	},
 
 	/* -------------------------------------------------------------------------- */
-	/*                                Browser:URL Access                          */
+	/*                                WS:Update			                          */
 	/* -------------------------------------------------------------------------- */
 	{
-		displayName: 'URL Access',
-		name: 'urlAccess',
+		displayName: 'Object',
+		name: 'object',
 		type: 'string',
 		required: true,
 		default: '',
@@ -91,26 +89,62 @@ export const webServiceFields: INodeProperties[] = [
 				operation: ['update'],
 			},
 		},
-		description: 'Put your url.',
+		description: 'Object that you want to save.',
 	},
 	{
-		displayName: 'Find By Xpath and Click',
-		name: 'findByXpathAndClick',
+		displayName: 'Table',
+		name: 'table',
 		type: 'string',
 		required: true,
 		default: '',
 		displayOptions: {
 			show: {
-				resource: ['find'],
-				operation: ['findByXpathAndClick'],
+				resource: ['webService'],
+				operation: ['update'],
 			},
 		},
-		description: 'Put your url.',
+		description: 'Table that you want to persist your data',
+	},
+
+	/* -------------------------------------------------------------------------- */
+	/*                                WS:Find			                          */
+	/* -------------------------------------------------------------------------- */
+	{
+		displayName: 'Query',
+		name: 'query',
+		type: 'string',
+		required: true,
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['webService'],
+				operation: ['find'],
+			},
+		},
+		description: 'Your query sql',
 	},
 	{
-		displayName: 'Close Browser',
-		name: 'close',
-		type: 'hidden',
+		displayName: 'Table',
+		name: 'table',
+		type: 'string',
+		required: true,
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['webService'],
+				operation: ['find'],
+			},
+		},
+		description: 'Table that you want to persist your data',
+	},
+	/* -------------------------------------------------------------------------- */
+	/*                                WS:Delete			                          */
+	/* -------------------------------------------------------------------------- */
+
+	{
+		displayName: 'Delete Query',
+		name: 'deleteQuery',
+		type: 'string',
 		required: true,
 		default: '',
 		displayOptions: {
@@ -119,6 +153,20 @@ export const webServiceFields: INodeProperties[] = [
 				operation: ['delete'],
 			},
 		},
+		description: 'Your delete query sql',
 	},
-
+	{
+		displayName: 'Table',
+		name: 'table',
+		type: 'string',
+		required: true,
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['webService'],
+				operation: ['delete'],
+			},
+		},
+		description: 'Table that you want to persist your data',
+	},
 ];
